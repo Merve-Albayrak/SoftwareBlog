@@ -212,7 +212,7 @@ namespace SoftwareBlog.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    b.Property<int>("BlogPostId")
+                    b.Property<int?>("BlogPostId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -255,7 +255,7 @@ namespace SoftwareBlog.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("PostNumber")
+                    b.Property<int?>("PostNumber")
                         .HasColumnType("integer");
 
                     b.Property<string>("SecurityStamp")

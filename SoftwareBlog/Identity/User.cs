@@ -9,12 +9,13 @@ namespace SoftwareBlog.Identity
 {
     public class User:IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int PostNumber { get; set; }
+#nullable enable
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public int? PostNumber { get; set; }
 
-        public int BlogPostId { get; set; }
-        public List<BlogPost> BlogPosts { get; set; }
-
+        public int? BlogPostId { get; set; }
+        public List<BlogPost>? BlogPosts { get; set; }
+#nullable disable
     }
 }

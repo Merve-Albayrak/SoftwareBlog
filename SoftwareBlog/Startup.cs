@@ -1,3 +1,7 @@
+using Business.Abstract;
+using Business.Concrete;
+using Data.Abstract;
+using Data.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,11 +31,17 @@ namespace SoftwareBlog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
 
+
         {
+            services.AddScoped<BlogContext>();
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();//þifre sýfýrlamamda benzersiz token
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_configuration.GetConnectionString("PostgressqlConnetionString")));
             services.AddControllersWithViews();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ICategoryService, CategoryManager>();
+            //services.AddScoped<ICommentRepository, Comment>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,7 +56,7 @@ namespace SoftwareBlog
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -54,7 +64,18 @@ namespace SoftwareBlog
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+
+
+                endpoints.MapControllerRoute(
+                    name: "register",
+                    pattern: "{action}",
+
+                   defaults: new{ controller="Account",action="Register"}
+                    );
+
+
+
+            }); 
         }
     }
 }

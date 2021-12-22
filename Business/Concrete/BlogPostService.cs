@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    class BlogPostService
+   public class BlogPostService
     {
     }
 }

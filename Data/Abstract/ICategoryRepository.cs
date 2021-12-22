@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-   public interface ICategoryRepository
+   public interface ICategoryRepository:IRepository<Category>
     {
     }
 }

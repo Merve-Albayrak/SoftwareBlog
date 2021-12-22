@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data;
 
 namespace Business.Abstract
 {
-    class ICategoryService
+    public interface ICategoryService:IValidator<Category>
     {
+        Category GetById(int id);
+        List<Category> GetAll();
+        void Create(Category entity);
+        void Update(Category entity);
+        void Delete(Category entity);
+
+        void DeleteFromCategory(int productId, int categoryId);
     }
 }

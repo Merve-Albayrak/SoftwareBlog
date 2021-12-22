@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-    class IBlogPostRepository
+    public interface IBlogPostRepository:IRepository<BlogPost>
     {
     }
 }

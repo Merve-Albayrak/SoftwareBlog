@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    class IBlogPostService
+  public  class IBlogPostService
     {
     }
 }

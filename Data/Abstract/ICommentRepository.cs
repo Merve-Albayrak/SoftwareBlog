@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-    interface ICommentRepository
+    public interface ICommentRepository:IRepository<Comment>
     {
     }
 }
