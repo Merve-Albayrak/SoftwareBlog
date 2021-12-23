@@ -1,0 +1,27 @@
+﻿@model PostModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form asp-action="CreatePost" asp-controller="Post" method="post">
+        <textarea asp-for="Text" id="editor" class="form-control">
+
+                                                  
+
+                    </textarea>
+        <button asp-action="CreatePost" asp-controller="Post" type="submit" class="btn btn-success  "> Gönder</button>
+    </form>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+
+
+
+
+
+    <script>CKEDITOR.replace("editor")</script>
+</body>
+</html>

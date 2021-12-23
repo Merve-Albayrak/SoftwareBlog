@@ -23,7 +23,7 @@ namespace Data.Concrete
         private BlogpostRepository _blogPostRepository;
 
         public ICategoryRepository Categories => _categoryRepository;
-        public IBlogPostRepository BlogPosts => _blogPostRepository;
+        public IBlogPostRepository BlogPosts => _blogPostRepository?? new BlogpostRepository(_context);
         public ICommentRepository Comments => _commentRepository;
 
         public void Save()

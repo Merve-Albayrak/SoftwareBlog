@@ -3,15 +3,17 @@ using System;
 using Data.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20211222232148_updateblogpostmodel")]
+    partial class updateblogpostmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,19 +28,19 @@ namespace Data.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Content")
                         .HasColumnType("text");
 
-                    b.Property<int?>("DislikeNumber")
+                    b.Property<int>("DislikeNumber")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("LikeNumber")
+                    b.Property<int>("LikeNumber")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("PostDate")
+                    b.Property<DateTime>("PostDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Title")
@@ -96,7 +98,9 @@ namespace Data.Migrations
                 {
                     b.HasOne("Data.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });

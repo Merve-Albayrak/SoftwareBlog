@@ -52,11 +52,6 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        //public category getbyıdwithproducts(int categoryıd)
-        //{
-        //    return null;
-        //  //  return _unitofwork.categories.getbyıdwithproducts(categoryıd);
-        //}
 
 
         public void Update(Category entity)

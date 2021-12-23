@@ -22,25 +22,24 @@ namespace SoftwareBlog.Controllers
 
         }
 
-        public async Task<IActionResult> MyPage(string id)
+        public async Task<IActionResult> MyPage()
         {
             var user = await _userManager.GetUserAsync(User);
-            id = user.Id;
+           string id = user.Id;
           //  id = _signInManager.IsSignedIn();
 
             return View();
         }
-
-
+      
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Login(string ReturnUrl = null)
-        {
-            return RedirectToAction("Index", "Home");
+        //public IActionResult Login(string ReturnUrl = null)
+        //{
+        //    return RedirectToAction("Index", "Home");
             
-        }
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -70,13 +69,13 @@ namespace SoftwareBlog.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MyPage", "Account");
             }
 
             ModelState.AddModelError("", "Girilen kullanıcı adı veya parola yanlış");
             return View(model);
         }
-       [Route("Register")]
+     //  [Route("Register")]
         public IActionResult Register()
         {
             return View();

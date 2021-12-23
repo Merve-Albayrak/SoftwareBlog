@@ -39,6 +39,7 @@ namespace SoftwareBlog
             services.AddControllersWithViews();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<IBlogPostService, BlogPostManager>();
             //services.AddScoped<ICommentRepository, Comment>();
         }
 

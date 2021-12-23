@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+@model PostModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -41,11 +46,12 @@
                             <!-- END profile-header-content -->
                             <!-- BEGIN profile-header-tab -->
                             <ul class="profile-header-tab nav nav-tabs">
-                                <li class="nav-item"><a href="#profile-post" class="nav-link active show" data-toggle="tab">POSTS</a></li>
-                                <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">ABOUT</a></li>
-                                <li class="nav-item"><a href="#profile-photos" class="nav-link" data-toggle="tab">PHOTOS</a></li>
-                                <li class="nav-item"><a href="#profile-videos" class="nav-link" data-toggle="tab">VIDEOS</a></li>
-                                <li class="nav-item"><a href="#profile-friends" class="nav-link" data-toggle="tab">FRIENDS</a></li>
+                                <li class="nav-item"><a href="#profile-post" class="nav-link active show" data-toggle="tab">Yazılarım</a></li>
+                                <li class="nav-item"><a asp-controller="Post" asp-action="Index" class="nav-link" >Post Yaz</a></li>
+                                <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">Hakkında</a></li>
+                                <li class="nav-item"><a href="#profile-photos" class="nav-link" data-toggle="tab">Fotoğraflar</a></li>
+
+                                <li class="nav-item"><a href="#profile-friends" class="nav-link" data-toggle="tab">Arkadaşlar</a></li>
                             </ul>
                             <!-- END profile-header-tab -->
                         </div>
@@ -231,8 +237,8 @@
                                         <!-- end timeline-icon -->
                                         <!-- begin timeline-body -->
                                         <div class="timeline-content">
-                                            <form action="/" method="post">
-                                                <textarea id="editor" class="form-control">
+                                            <form asp-action="CreatePost" asp-controller="Post" method="post">
+                                                <textarea asp-for="Text" id="editor" class="form-control">
 
                                                   
 

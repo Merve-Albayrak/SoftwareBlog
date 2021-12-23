@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-   public interface IUnitOfWork
+   public interface IUnitOfWork:IDisposable
     {
         ICategoryRepository Categories { get; }
         ICommentRepository Comments { get; }
