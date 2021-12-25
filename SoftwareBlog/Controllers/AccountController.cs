@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftwareBlog.Identity;
 using SoftwareBlog.Models;
@@ -13,25 +14,38 @@ namespace SoftwareBlog.Controllers
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
-
-        public AccountController( UserManager<User> userManager, SignInManager<User> signInManager)
+        IBlogPostService _blogPostService;
+        public AccountController( UserManager<User> userManager, SignInManager<User> signInManager, IBlogPostService blogPostService)
         {
             _ = this.User;
             _userManager = userManager;
             _signInManager = signInManager;
+            _blogPostService = blogPostService;
 
         }
 
         public async Task<IActionResult> MyPage()
         {
             var user = await _userManager.GetUserAsync(User);
-           string id = user.Id;
-          //  id = _signInManager.IsSignedIn();
+            string id = user.Id;
+            var posts = _blogPostService.GetAll();
 
-            return View();
+
+
+            //  id = _signInManager.IsSignedIn();
+
+            return View(new MyPageListViewModel()
+
+            { MyPosts = posts.Where(x => x.UserId == id).ToList(),
+
+
+
+                 }
+                
+                );
         }
-      
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Login()
         {
             return View();
         }
@@ -50,8 +64,8 @@ namespace SoftwareBlog.Controllers
                 return View(model);
             }
 
-             var user = await _userManager.FindByNameAsync(model.UserName);
-          //  var user = await _userManager.FindByEmailAsync(model.UserName);
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            //  var user = await _userManager.FindByEmailAsync(model.UserName);
 
             if (user == null)
             {
@@ -66,19 +80,36 @@ namespace SoftwareBlog.Controllers
             //}
 
             var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, false);
-
+            var roles = await _userManager.GetRolesAsync(user);
             if (result.Succeeded)
             {
+                foreach (var role in roles)
+                {
+
+                    if (role=="admin")
+                    {
+
+
+                        return RedirectToAction("UserList", "Admin");
+                    }
+                }
+
                 return RedirectToAction("MyPage", "Account");
             }
 
             ModelState.AddModelError("", "Girilen kullanıcı adı veya parola yanlış");
             return View(model);
         }
-     //  [Route("Register")]
+        [Route("Register")]
         public IActionResult Register()
         {
             return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+           
+            return Redirect("~/");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

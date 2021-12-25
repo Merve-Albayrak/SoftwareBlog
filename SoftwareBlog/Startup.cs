@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using shopapp.webui.Identity;
 using SoftwareBlog.Identity;
 using System;
 using System.Collections.Generic;
@@ -40,12 +41,20 @@ namespace SoftwareBlog
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IBlogPostService, BlogPostManager>();
-            //services.AddScoped<ICommentRepository, Comment>();
-        }
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+
+            });
+                //services.AddScoped<ICommentRepository, Comment>();
+            }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration,UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             app.UseStaticFiles(); //wwwrootu kullanýr
             if (env.IsDevelopment())
@@ -74,9 +83,20 @@ namespace SoftwareBlog
                    defaults: new{ controller="Account",action="Register"}
                     );
 
+                endpoints.MapControllerRoute(
+                   name: "adminuseredit",
+                   pattern: "admin/user/{id?}",
+                   defaults: new { controller = "Admin", action = "UserEdit" }
+               );
 
+                endpoints.MapControllerRoute(
+                   name: "adminusers",
+                   pattern: "admin/user/list",
+                   defaults: new { controller = "Admin", action = "UserList" }
+               );
 
-            }); 
+            });
+            SeedIdentity.Seed(userManager, roleManager, configuration).Wait();
         }
     }
 }

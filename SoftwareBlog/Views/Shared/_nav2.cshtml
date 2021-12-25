@@ -1,5 +1,4 @@
-﻿@model LoginModel
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@
         }
 
         .navbar {
-             height: 100px;
+            height: 100px;
             background: #fff;
             padding-left: 16px;
             padding-right: 16px;
@@ -244,43 +243,53 @@
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
-      
-            <a href="#" class="navbar-brand">Brand<b>Name</b></a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Collection of nav links, forms, and other content for toggling -->
-            <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-                <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link">Home</a>
-                    <a href="#" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Web Design</a>
-                            <a href="#" class="dropdown-item">Web Development</a>
-                            <a href="#" class="dropdown-item">Graphic Design</a>
-                            <a href="#" class="dropdown-item">Digital Marketing</a>
-                        </div>
+
+        <a href="#" class="navbar-brand">Brand<b>Name</b></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link">Anasayfa</a>
+                <a href="#" class="nav-item nav-link">Hakkımızda</a>
+                <div class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Web Design</a>
+                        <a href="#" class="dropdown-item">Web Development</a>
+                        <a href="#" class="dropdown-item">Graphic Design</a>
+                        <a href="#" class="dropdown-item">Digital Marketing</a>
                     </div>
-                    <a href="#" class="nav-item nav-link active">Pricing</a>
-                    <a href="#" class="nav-item nav-link">Blog</a>
-                    <a href="#" class="nav-item nav-link">Contact</a>
                 </div>
-                <form class="navbar-form form-inline">
-                    <div class="input-group search-box">
-                        <input type="text" id="search" class="form-control" placeholder="Search here...">
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <i class="material-icons">&#xE8B6;</i>
-                            </span>
-                        </div>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+
+
+                {
+                    <a asp-controller="Admin" asp-action="UserEdit" class="nav-item nav-link active">Kullanıcı İşlemleri</a>
+                }
+
+
+                <a href="#" class="nav-item nav-link">Blog</a>
+                <a href="#" class="nav-item nav-link">Contact</a>
+            </div>
+            <form class="navbar-form form-inline">
+                <div class="input-group search-box">
+                    <input type="text" id="search" class="form-control" placeholder="Search here...">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="material-icons">&#xE8B6;</i>
+                        </span>
                     </div>
-                </form>
-                <div class="navbar-nav ml-auto action-buttons">
+                </div>
+            </form>
+            <div class="navbar-nav ml-auto action-buttons">
+
+                @if (!User.Identity.IsAuthenticated)
+                {
                     <div class="nav-item dropdown">
-                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
-                        <div class="dropdown-menu action-form">
+                        <a href="/Account/Login" class="nav-link">Login</a>
+                        @*<div class="dropdown-menu action-form">
                             <form asp-controller="Account" asp-action="Login" method="post">
                                 <p class="hint-text">Sign in with your social media account</p>
                                 <div class="form-group social-btn clearfix">
@@ -299,16 +308,35 @@
                                     <a href="#">Forgot Your password?</a>
                                 </div>
                             </form>
-                        </div>
+                        </div>*@
+
                     </div>
                     <div class="nav-item dropdown">
-                        <a asp-action="Register" asp-controller="Account" class="nav-link">Sign up</a>
-                        
+                        <a href="Account/Login" class="nav-link">Sign up</a>
+
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link">
+                            @User.Identity.Name
+                        </a>
+
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a asp-action="Logout" asp-controller="Account" class="nav-link">Logout</a>
+
+                    </div>
+
+
+                }
+
 
             </div>
+
+        </div>
     </nav>
-  
+
 </body>
 </html>

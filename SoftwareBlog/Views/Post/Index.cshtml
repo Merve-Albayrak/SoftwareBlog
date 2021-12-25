@@ -23,5 +23,9 @@
 
 
     <script>CKEDITOR.replace("editor")</script>
+    <script>
+        CKEDITOR.instaces.my_editor.setData("#{raw(html.gsub('\r\n',''))}")
+
+    </script>
 </body>
 </html>

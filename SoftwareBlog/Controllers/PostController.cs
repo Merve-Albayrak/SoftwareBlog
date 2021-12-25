@@ -37,7 +37,8 @@ namespace SoftwareBlog.Controllers
                 var entity = new BlogPost()
                 {
                     Content = postModel.Text,
-                    UserId=id
+                    UserId=id,
+                    PostDate=DateTime.Now
 
                 };
 

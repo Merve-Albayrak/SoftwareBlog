@@ -1,26 +1,38 @@
-﻿
+﻿@model LoginModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form-v6 by Colorlib</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="~/register/css/nunito-font.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="~/register/css/style.css" />
+</head>
+<body class="form-v6 ">
+    <div class="page-content">
+        <div class="form-v6-content">
+            <div class="form-left">
+                <img src="~/register/images/back.jpg" alt="form">
+            </div>
+            <form class="form-detail " asp-controller="Account" asp-action="Login" method="post">
+                <h2>Üye Ol</h2>
+                <div class="form-row ">
+                    <input asp-for="UserName" type="text" id="full-name" class="input-text" placeholder="Kullanıcı adı" required>
+                </div>
+                
+                <div class="form-row ">
+                    <input asp-for="Password" type="password" id="password" class="input-text" placeholder="Şifre" required>
+                </div>
+                
+                <div class="form-row-last ">
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
 
-
-<div class="nav-item dropdown">
-    <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
-    <div class="dropdown-menu action-form">
-        <form action="/examples/actions/confirmation.php" method="post">
-            <p class="hint-text">Sign in with your social media account</p>
-            <div class="form-group social-btn clearfix">
-                <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
-                <a href="#" class="btn btn-secondary twitter-btn float-right"><i class="fa fa-twitter"></i> Twitter</a>
-            </div>
-            <div class="or-seperator"><b>or</b></div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="required">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="required">
-            </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Login">
-            <div class="text-center mt-2">
-                <a href="#">Forgot Your password?</a>
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
