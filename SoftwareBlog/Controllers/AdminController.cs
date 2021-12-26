@@ -71,10 +71,10 @@ namespace SoftwareBlog.Controllers
                         await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles).ToArray<string>());
                         await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles).ToArray<string>());
 
-                        return Redirect("/admin/user/list");
+                        return RedirectToAction("UserList", "Admin");
                     }
                 }
-                return Redirect("/admin/user/list");
+                return RedirectToAction("UserList", "Admin");
             }
 
             return View(model);

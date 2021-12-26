@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SoftwareBlog.Identity;
 using SoftwareBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -11,11 +14,39 @@ namespace SoftwareBlog.Controllers
 {
     public class HomeController : Controller
     {
-        
 
-        public IActionResult Index()
+
+        private UserManager<User> _userManager;
+        private SignInManager<User> _signInManager;
+        IBlogPostService _blogPostService;
+        public HomeController(UserManager<User> userManager, SignInManager<User> signInManager,IBlogPostService blogPostService)
         {
-            return View();
+            _ = this.User;
+            _blogPostService = blogPostService;
+            _signInManager = signInManager;
+            _userManager = userManager;
+
+        }
+        public async Task<IActionResult> Index()
+        {
+            
+            var posts =  await _blogPostService.GetAll();
+
+
+
+            //  id = _signInManager.IsSignedIn();
+
+            return View(new MyPageListViewModel()
+
+            {
+                MyPosts = posts.OrderByDescending(x=>x.BlogPostId).Take(9).ToList(),
+
+
+
+            });
+
+
+         //   return View();
         }
 
        

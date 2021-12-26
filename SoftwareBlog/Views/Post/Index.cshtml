@@ -8,6 +8,10 @@
 </head>
 <body>
     <form asp-action="CreatePost" asp-controller="Post" method="post">
+        <div class="form-row ">
+            <input asp-for="Title" type="text" id="full-name" class="input-text mb-2 mt-2 x" placeholder="Yazı başlığı" required>
+        </div>
+
         <textarea asp-for="Text" id="editor" class="form-control">
 
                                                   

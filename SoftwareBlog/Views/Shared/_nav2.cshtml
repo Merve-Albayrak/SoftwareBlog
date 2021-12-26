@@ -1,4 +1,4 @@
-﻿
+﻿@inject IStringLocalizer<lang> lang
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -242,7 +242,7 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand navbar-light bg-light">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light">
 
         <a href="#" class="navbar-brand">Brand<b>Name</b></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -251,7 +251,7 @@
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link">Anasayfa</a>
+                <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">@lang["Home"]</a>
                 <a href="#" class="nav-item nav-link">Hakkımızda</a>
                 <div class="nav-item dropdown">
                     <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
@@ -262,11 +262,12 @@
                         <a href="#" class="dropdown-item">Digital Marketing</a>
                     </div>
                 </div>
+
                 @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
 
 
                 {
-                    <a asp-controller="Admin" asp-action="UserEdit" class="nav-item nav-link active">Kullanıcı İşlemleri</a>
+                    <a href="/Admin/UserList/" class="nav-item nav-link active">Kullanıcı İşlemleri</a>
                 }
 
 
@@ -283,6 +284,13 @@
                     </div>
                 </div>
             </form>
+            <div class="header__top__right__language">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-culture="tr-TR">Türkçe</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-culture="en-US">English</a></li>
+
+                </ul>
+            </div>
             <div class="navbar-nav ml-auto action-buttons">
 
                 @if (!User.Identity.IsAuthenticated)
@@ -290,36 +298,36 @@
                     <div class="nav-item dropdown">
                         <a href="/Account/Login" class="nav-link">Login</a>
                         @*<div class="dropdown-menu action-form">
-                            <form asp-controller="Account" asp-action="Login" method="post">
-                                <p class="hint-text">Sign in with your social media account</p>
-                                <div class="form-group social-btn clearfix">
-                                    <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-secondary twitter-btn float-right"><i class="fa fa-twitter"></i> Twitter</a>
-                                </div>
-                                <div class="or-seperator"><b>or</b></div>
-                                <div class="form-group">
-                                    <input asp-for="UserName" type="text" class="form-control" placeholder="Username" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="Password" type="password" class="form-control" placeholder="Password" required="required">
-                                </div>
-                                <input type="submit" class="btn btn-primary btn-block" value="Login">
-                                <div class="text-center mt-2">
-                                    <a href="#">Forgot Your password?</a>
-                                </div>
-                            </form>
-                        </div>*@
+                        <form asp-controller="Account" asp-action="Login" method="post">
+                            <p class="hint-text">Sign in with your social media account</p>
+                            <div class="form-group social-btn clearfix">
+                                <a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
+                                <a href="#" class="btn btn-secondary twitter-btn float-right"><i class="fa fa-twitter"></i> Twitter</a>
+                            </div>
+                            <div class="or-seperator"><b>or</b></div>
+                            <div class="form-group">
+                                <input asp-for="UserName" type="text" class="form-control" placeholder="Username" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password" required="required">
+                            </div>
+                            <input type="submit" class="btn btn-primary btn-block" value="Login">
+                            <div class="text-center mt-2">
+                                <a href="#">Forgot Your password?</a>
+                            </div>
+                        </form>
+                    </div>*@
 
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="Account/Login" class="nav-link">Sign up</a>
+                        <a asp-controller="Account" asp-action="Register" class="nav-link">Sign up</a>
 
                     </div>
                 }
                 else
                 {
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link">
+                        <a asp-controller="Account" asp-action="MyPage" class="nav-link">
                             @User.Identity.Name
                         </a>
 

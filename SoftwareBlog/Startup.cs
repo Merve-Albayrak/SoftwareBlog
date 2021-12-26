@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ using shopapp.webui.Identity;
 using SoftwareBlog.Identity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,6 +36,8 @@ namespace SoftwareBlog
 
 
         {
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddScoped<BlogContext>();
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();//þifre sýfýrlamamda benzersiz token
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_configuration.GetConnectionString("PostgressqlConnetionString")));
@@ -56,13 +60,26 @@ namespace SoftwareBlog
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration,UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
+
             app.UseStaticFiles(); //wwwrootu kullanýr
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-           
-          //  app.UseHttpsRedirection();
+            var supportedCultures = new[]
+{
+                new CultureInfo("tr-TR"),
+                new CultureInfo("en-Us")
+
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("tr-TR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+            //  app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -99,9 +99,8 @@
                                                     <span class="pull-right text-muted">18 Views</span>
                                                 </div>
                                                 <div class="timeline-content">
-                                                    <p>
-                                                        @item.Content
-                                                    </p>
+                                                   @Html.Raw(item.Content);
+                                                   
                                                 </div>
                                                 <div class="timeline-likes">
                                                     <div class="stats-right">

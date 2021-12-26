@@ -27,9 +27,9 @@ namespace Data.Concrete
             context.Set<T>().Remove(entity);
         }
 
-        public List<T> GetAll()
+        public async Task<List<T> >GetAll()
         {
-            return context.Set<T>().ToList();
+            return await context.Set<T>().ToListAsync();
         }
 
         public T GetById(int id)

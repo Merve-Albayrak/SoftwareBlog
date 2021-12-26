@@ -38,7 +38,9 @@ namespace SoftwareBlog.Controllers
                 {
                     Content = postModel.Text,
                     UserId=id,
-                    PostDate=DateTime.Now
+                    PostDate=DateTime.Now,
+                    Title=postModel.Title,
+                    UserName=user.UserName
 
                 };
 

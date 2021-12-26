@@ -28,7 +28,7 @@ namespace SoftwareBlog.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             string id = user.Id;
-            var posts = _blogPostService.GetAll();
+            var posts = await _blogPostService.GetAll();
 
 
 
@@ -36,11 +36,13 @@ namespace SoftwareBlog.Controllers
 
             return View(new MyPageListViewModel()
 
-            { MyPosts = posts.Where(x => x.UserId == id).ToList(),
+            {
+                MyPosts =  posts.Where(x => x.UserId == id).ToList(),
+                
 
 
 
-                 }
+            }
                 
                 );
         }

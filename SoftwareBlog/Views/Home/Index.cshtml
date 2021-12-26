@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model MyPageListViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,103 +42,30 @@
         <section class="container">
             <div class="site-content">
                 <div class="posts">
-                    <div class="post-content" >
-                        <div class="post-image">
-                            <div>
-                                <img src="~/assets/Blog-post/blog1.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>January 14, 2019</span>
-                                <span>2 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">
-                                Why should boys have all the fun? it's the women who are making india an
-                                alcohol-loving contry
-                            </a>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More  <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+                    
+                   
                     <hr>
-                    <div class="post-content" >
-                        <div class="post-image">
-                            <div>
-                                <img src="~/assets/Blog-post/blog2.png" class="img" alt="blog1">
+                    @foreach (var item in Model.MyPosts)
+                    {<div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="~/assets/Blog-post/blog4.png" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-user text-gray"></i>@item.UserName</span>
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>@item.PostDate</span>
+                                    <span>12 Commets</span>
+                                </div>
                             </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>January 16, 2019</span>
-                                <span>7 Commets</span>
+                            <div class="post-title">
+                                <a href="#">@item.Title</a>
+                               
+                                  @Html.Raw(  @item.Content)
+                                
+                                <button class="btn post-btn">Read More  <i class="fas fa-arrow-right"></i></button>
                             </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">
-                                Why should boys have all the fun? it's the women who are making india an
-                                alcohol-loving contry
-                            </a>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More  <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="~/assets/Blog-post/blog3.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>January 19, 2019</span>
-                                <span>5 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">New data recording system to better analyse road accidents</a>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More &nbsp; <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="post-image">
-                            <div>
-                                <img src="~/assets/Blog-post/blog4.png" class="img" alt="blog1">
-                            </div>
-                            <div class="post-info flex-row">
-                                <span><i class="fas fa-user text-gray"></i>Admin</span>
-                                <span><i class="fas fa-calendar-alt text-gray"></i>January 21, 2019</span>
-                                <span>12 Commets</span>
-                            </div>
-                        </div>
-                        <div class="post-title">
-                            <a href="#">New data recording system to better analyse road accidents</a>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque voluptas deserunt beatae
-                                adipisci iusto totam placeat corrupti ipsum, tempora magnam incidunt aperiam tenetur a
-                                nobis, voluptate, numquam architecto fugit. Eligendi quidem ipsam ducimus minus magni
-                                illum similique veniam tempore unde?
-                            </p>
-                            <button class="btn post-btn">Read More  <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+                        </div>}
+
                     <div class="pagination flex-row">
                         <a href="#"><i class="fas fa-chevron-left"></i></a>
                         <a href="#" class="pages">1</a>
@@ -173,92 +102,32 @@
                     </div>
                     <div class="popular-post">
                         <h2>Popular Post</h2>
-                        <div class="post-content"  >
-                            <div class="post-image">
-                                <div>
-                                    <img src="~/assets/popular-post/m-blog-1.jpg" class="img" alt="blog1">
+
+
+                        @foreach (var item in Model.MyPosts)
+                        {
+
+                            <div class="post-content">
+                                <div class="post-image">
+                                    <div>
+                                        <img src="~/assets/popular-post/m-blog-5.jpg" class="img" alt="blog1">
+                                    </div>
+                                    <div class="post-info flex-row">
+                                        <span>
+                                            <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;@item.
+                                        </span>
+                                        <span>2 Commets</span>
+                                    </div>
                                 </div>
-                                <div class="post-info flex-row">
-                                    <span>
-                                        <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019
-                                    </span>
-                                    <span>2 Commets</span>
+                                <div class="post-title">
+                                    <a href="#">@item.Title</a>
                                 </div>
+                                @Html.Raw(item.Content)
                             </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <div class="post-image">
-                                <div>
-                                    <img src="~/assets/popular-post/m-blog-2.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span>
-                                        <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019
-                                    </span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" >
-                            <div class="post-image">
-                                <div>
-                                    <img src="~/assets/popular-post/m-blog-3.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span>
-                                        <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019
-                                    </span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" >
-                            <div class="post-image">
-                                <div>
-                                    <img src="~/assets/popular-post/m-blog-4.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span>
-                                        <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019
-                                    </span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                        <div class="post-content" >
-                            <div class="post-image">
-                                <div>
-                                    <img src="~/assets/popular-post/m-blog-5.jpg" class="img" alt="blog1">
-                                </div>
-                                <div class="post-info flex-row">
-                                    <span>
-                                        <i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
-                                        2019
-                                    </span>
-                                    <span>2 Commets</span>
-                                </div>
-                            </div>
-                            <div class="post-title">
-                                <a href="#">New data recording system to better analyse road accidents</a>
-                            </div>
-                        </div>
-                    </div>
+
+                        }
+
+                    </div>    
                     <div class="newsletter" >
                         <h2>Newsletter</h2>
                         <div class="form-element">

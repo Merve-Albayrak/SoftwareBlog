@@ -12,7 +12,7 @@ namespace Data.Abstract
         void Update(T entity);
         void Delete(T entity);
         T GetById(int id);
-        List<T> GetAll();
+       Task< List<T>> GetAll();
 
     }
 }

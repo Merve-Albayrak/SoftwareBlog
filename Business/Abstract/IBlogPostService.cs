@@ -13,7 +13,7 @@ namespace Business.Abstract
 
       //  BlogPost GetByIdWithProducts(int categoryId);
 
-        List<BlogPost> GetAll();
+       Task< List<BlogPost>> GetAll();
 
         bool Create(BlogPost entity);
 

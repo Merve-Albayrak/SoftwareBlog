@@ -35,7 +35,7 @@ namespace Business.Concrete
             _unitOfWork.BlogPosts.Delete(entity);
         }
 
-        public List<BlogPost> GetAll()
+        public Task<List<BlogPost>> GetAll()
         {
             return _unitOfWork.BlogPosts.GetAll();
         }

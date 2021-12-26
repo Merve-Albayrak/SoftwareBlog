@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareBlog", "SoftwareBlog\SoftwareBlog.csproj", "{C06A36F3-3B73-471E-925A-543C15854D36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{CB74FFCA-411C-45D0-B48B-D5B92C0046CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{CB74FFCA-411C-45D0-B48B-D5B92C0046CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{F03ED365-B765-4694-A220-231A3E5385FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{F03ED365-B765-4694-A220-231A3E5385FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{5D859A49-842A-4A5E-AECC-25CA0A1AE001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{5D859A49-842A-4A5E-AECC-25CA0A1AE001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareBlogAPI", "SoftwareBlogAPI\SoftwareBlogAPI.csproj", "{BC080B4D-A3FD-44A7-B87F-A743D5033434}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5D859A49-842A-4A5E-AECC-25CA0A1AE001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D859A49-842A-4A5E-AECC-25CA0A1AE001}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D859A49-842A-4A5E-AECC-25CA0A1AE001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC080B4D-A3FD-44A7-B87F-A743D5033434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC080B4D-A3FD-44A7-B87F-A743D5033434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC080B4D-A3FD-44A7-B87F-A743D5033434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC080B4D-A3FD-44A7-B87F-A743D5033434}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
