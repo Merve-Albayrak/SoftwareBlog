@@ -120,13 +120,37 @@
   <data name="About" xml:space="preserve">
     <value>Hakkımızda</value>
   </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
   <data name="Category" xml:space="preserve">
-    <value>Kategori</value>
+    <value>Kategoriler</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>İletişim</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Anasayfa</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
+  <data name="PopularPosts" xml:space="preserve">
+    <value>Popüler Gonderiler</value>
+  </data>
   <data name="Sale" xml:space="preserve">
     <value>İndirimdeki Ürünler</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Servisler</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="UserEdit" xml:space="preserve">
+    <value>Kullanıcı İşlemleri</value>
   </data>
 </root>

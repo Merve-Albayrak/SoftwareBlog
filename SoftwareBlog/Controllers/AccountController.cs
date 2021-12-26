@@ -14,13 +14,15 @@ namespace SoftwareBlog.Controllers
     {
         private UserManager<User> _userManager;
         private SignInManager<User> _signInManager;
+        private RoleManager<IdentityRole> _roleManager;
         IBlogPostService _blogPostService;
-        public AccountController( UserManager<User> userManager, SignInManager<User> signInManager, IBlogPostService blogPostService)
+        public AccountController( UserManager<User> userManager, SignInManager<User> signInManager, IBlogPostService blogPostService, RoleManager<IdentityRole> roleManager)
         {
             _ = this.User;
             _userManager = userManager;
             _signInManager = signInManager;
             _blogPostService = blogPostService;
+            _roleManager = roleManager;
 
         }
 
@@ -102,7 +104,7 @@ namespace SoftwareBlog.Controllers
             ModelState.AddModelError("", "Girilen kullanıcı adı veya parola yanlış");
             return View(model);
         }
-        [Route("Register")]
+   //     [Route("Register")]
         public IActionResult Register()
         {
             return View();
@@ -115,27 +117,35 @@ namespace SoftwareBlog.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-      //  [Route("Register")]
+      
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            //return RedirectToAction("Index", "Home");
-          //  Console.WriteLine("anan");
+           
             if (!ModelState.IsValid)
             {
-              //  return RedirectToAction("Index", "Home");
+             
                return View(model);
             }
-
+            bool x = await _roleManager.RoleExistsAsync("user");
+            if (!x)
+            {
+                var role = new IdentityRole();
+                role.Name = "user";
+                await _roleManager.CreateAsync(role);
+            }
             var user = new User()
             {
             
                 UserName = model.UserName,
-                Email = model.Email
+                Email = model.Email,
+                
             };
-
-            var result = await _userManager.CreateAsync(user, model.Password);
+       
+           var result = await _userManager.CreateAsync(user, model.Password);
+            
             if (result.Succeeded)
-            {
+            { 
+               await _userManager.AddToRoleAsync(user, "user");
                 // generate token
                 //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 //var url = Url.Action("ConfirmEmail", "Account", new
@@ -145,7 +155,7 @@ namespace SoftwareBlog.Controllers
                 //});
 
                 // email
-               // await _emailSender.SendEmailAsync(model.Email, "Hesabınızı onaylayınız.", $"Lütfen email hesabınızı onaylamak için linke <a href='https://localhost:5001{url}'>tıklayınız.</a>");
+                // await _emailSender.SendEmailAsync(model.Email, "Hesabınızı onaylayınız.", $"Lütfen email hesabınızı onaylamak için linke <a href='https://localhost:5001{url}'>tıklayınız.</a>");
                 return RedirectToAction("Index", "Home");
             }
 

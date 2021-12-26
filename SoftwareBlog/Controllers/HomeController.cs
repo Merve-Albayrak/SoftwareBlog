@@ -34,7 +34,6 @@ namespace SoftwareBlog.Controllers
 
 
 
-            //  id = _signInManager.IsSignedIn();
 
             return View(new MyPageListViewModel()
 
@@ -45,8 +44,6 @@ namespace SoftwareBlog.Controllers
 
             });
 
-
-         //   return View();
         }
 
        

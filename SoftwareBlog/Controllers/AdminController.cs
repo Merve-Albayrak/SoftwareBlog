@@ -89,5 +89,19 @@ namespace SoftwareBlog.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(UserDetailsModel model)
+        {
+            var entity = await _userManager.FindByIdAsync(model.UserId);
+
+            if (entity != null)
+            {
+                await _userManager.DeleteAsync(entity);
+            }
+
+
+
+            return RedirectToAction("UserList", "Admin");
+        }
     }
 }

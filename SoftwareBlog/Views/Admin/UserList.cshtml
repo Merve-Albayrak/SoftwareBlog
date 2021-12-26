@@ -52,7 +52,7 @@
                                     
                                     <form action="/admin/user/delete" method="POST" style="display: inline;">
                                         <input type="hidden" name="UserId" value="@item.Id">
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button asp-controller="Admin" asp-action="DeleteUser" type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </td>
                         </tr>

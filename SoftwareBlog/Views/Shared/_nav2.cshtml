@@ -244,7 +244,7 @@
 <body>
     <nav class="navbar navbar-expand-xl navbar-light bg-light">
 
-        <a href="#" class="navbar-brand">Brand<b>Name</b></a>
+        <a href="#" class="navbar-brand">Yazılım<b>Bloğu</b></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -252,9 +252,9 @@
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav">
                 <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">@lang["Home"]</a>
-                <a href="#" class="nav-item nav-link">Hakkımızda</a>
+                <a href="#" class="nav-item nav-link">@lang["About"]</a>
                 <div class="nav-item dropdown">
-                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">Services</a>
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle">@lang["Services"]</a>
                     <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">Web Design</a>
                         <a href="#" class="dropdown-item">Web Development</a>
@@ -267,12 +267,12 @@
 
 
                 {
-                    <a href="/Admin/UserList/" class="nav-item nav-link active">Kullanıcı İşlemleri</a>
+                    <a href="/Admin/UserList/" class="nav-item nav-link active">@lang["UserEdit"]</a>
                 }
 
 
-                <a href="#" class="nav-item nav-link">Blog</a>
-                <a href="#" class="nav-item nav-link">Contact</a>
+                <a href="#" class="nav-item nav-link">@lang["Blog"]</a>
+                <a href="#" class="nav-item nav-link">@lang["Contact"]</a>
             </div>
             <form class="navbar-form form-inline">
                 <div class="input-group search-box">
@@ -286,8 +286,8 @@
             </form>
             <div class="header__top__right__language">
                 <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-culture="tr-TR">Türkçe</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" asp-route-culture="en-US">English</a></li>
+                    <li><a asp-area=""  asp-route-culture="tr-TR">Türkçe</a></li>
+                    <li><a asp-area=""  asp-route-culture="en-US">English</a></li>
 
                 </ul>
             </div>
@@ -296,7 +296,7 @@
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <div class="nav-item dropdown">
-                        <a href="/Account/Login" class="nav-link">Login</a>
+                        <a href="/Account/Login" class="nav-link">@lang["Login"]</a>
                         @*<div class="dropdown-menu action-form">
                         <form asp-controller="Account" asp-action="Login" method="post">
                             <p class="hint-text">Sign in with your social media account</p>
@@ -320,7 +320,7 @@
 
                     </div>
                     <div class="nav-item dropdown">
-                        <a asp-controller="Account" asp-action="Register" class="nav-link">Sign up</a>
+                        <a asp-controller="Account" asp-action="Register" class="nav-link">@lang["SignUp"]</a>
 
                     </div>
                 }
@@ -333,7 +333,7 @@
 
                     </div>
                     <div class="nav-item dropdown">
-                        <a asp-action="Logout" asp-controller="Account" class="nav-link">Logout</a>
+                        <a asp-action="Logout" asp-controller="Account" class="nav-link">@lang["Logout"]</a>
 
                     </div>
 
