@@ -11,7 +11,7 @@ namespace Business.Abstract
     {
         BlogPost GetById(int id);
 
-      //  BlogPost GetByIdWithProducts(int categoryId);
+     
 
        Task< List<BlogPost>> GetAll();
 
@@ -19,7 +19,7 @@ namespace Business.Abstract
 
         void Update(BlogPost entity);
         void Delete(BlogPost entity);
-     //   void DeleteFromCategory(int productId, int categoryId);
+     
 
     }
 }

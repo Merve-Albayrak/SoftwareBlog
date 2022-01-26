@@ -17,5 +17,12 @@ namespace SoftwareBlog.Identity
         public int? BlogPostId { get; set; }
         public List<BlogPost>? BlogPosts { get; set; }
 #nullable disable
+        public string AboutMeText { get; set; }
+       
+        public DateTime RegisterDate { get; set; }
+        public DateTime BirthDay { get; set; }
+        public int Age { get; set; }
+        public string Address { get; set; }
+        public string Job { get; set; }
     }
 }

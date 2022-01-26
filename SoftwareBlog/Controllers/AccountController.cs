@@ -25,7 +25,40 @@ namespace SoftwareBlog.Controllers
             _roleManager = roleManager;
 
         }
+        public IActionResult EditProfile()
+        {
 
+
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(UserDetailsModel userDetails)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(userDetails);
+            }
+            var user = await _userManager.GetUserAsync(User);
+
+
+
+
+            return RedirectToAction("AboutMe", "Account");
+        }
+        public IActionResult AboutMe()
+        {
+
+
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AboutMe(UserDetailsModel userDetails)
+        {
+
+
+          return  RedirectToAction("AboutMe", "Account");
+        }
         public async Task<IActionResult> MyPage()
         {
             var user = await _userManager.GetUserAsync(User);

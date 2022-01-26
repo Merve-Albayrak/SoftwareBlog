@@ -39,9 +39,9 @@
                                 <!-- END profile-header-img -->
                                 <!-- BEGIN profile-header-info -->
                                 <div class="profile-header-info">
-                                    <h4 class="m-t-10 m-b-5">Sean Ngu</h4>
+                                    <h4 class="m-t-10 m-b-5">@User.Identity.Name</h4>
                                     <p class="m-b-10">UXUI + Frontend Developer</p>
-                                    <a href="#" class="btn btn-sm btn-info mb-2">Edit Profile</a>
+                                    <a asp-controller="Account" asp-action="EditProfile" class="btn btn-sm btn-info mb-2">Edit Profile</a>
                                 </div>
                                 <!-- END profile-header-info -->
                             </div>
@@ -52,7 +52,7 @@
                              
                                 <li class="nav-item"><a href="#profile-post" class="nav-link active show" data-toggle="tab">Yazılarım</a></li>
                                 <li class="nav-item"><a asp-controller="Post" asp-action="Index" class="nav-link">Post Yaz</a></li>
-                                <li class="nav-item"><a href="#profile-about" class="nav-link" data-toggle="tab">Hakkında</a></li>
+                                <li class="nav-item"><a asp-controller="Account" asp-action="AboutMe" >Hakkında</a></li>
                                 <li class="nav-item"><a href="#profile-photos" class="nav-link" data-toggle="tab">Fotoğraflar</a></li>
 
                                 <li class="nav-item"><a href="#profile-friends" class="nav-link" data-toggle="tab">Arkadaşlar</a></li>
@@ -99,7 +99,7 @@
                                                     <span class="pull-right text-muted">18 Views</span>
                                                 </div>
                                                 <div class="timeline-content">
-                                                   @Html.Raw(item.Content);
+                                                   @Html.Raw(item.Content)
                                                    
                                                 </div>
                                                 <div class="timeline-likes">

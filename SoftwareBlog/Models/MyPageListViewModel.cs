@@ -9,5 +9,6 @@ namespace SoftwareBlog.Models
     public class MyPageListViewModel
     {
         public List<BlogPost> MyPosts { get; set; }
+        public UserDetailsModel UserDetails { get; set; }
     }
 }
